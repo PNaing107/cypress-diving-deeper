@@ -9,7 +9,7 @@ describe('contact form', () => {
         cy.get('[data-cy="contact-input-name"]').type('John Doe');
         cy.get('[data-cy="contact-input-email"]').type('test@example.com');
         cy.get('[data-cy="contact-btn-submit"]').contains('Send Message');
-        cy.get('[data-cy="contact-btn-submit"]').click();
+        cy.submitForm();
 
         // after submitting it should display loading state & button should also be disabled
         cy.get('[data-cy="contact-btn-submit"]').contains('Sending...').and('have.attr', 'disabled');
@@ -23,7 +23,7 @@ describe('contact form', () => {
     });
 
     it('should validate the form input', () => {
-        cy.get('[data-cy="contact-btn-submit"]').click();
+        cy.submitForm();
         cy.get('[data-cy="contact-btn-submit"]').then(el => {
             expect(el).to.not.have.attr('disabled');
             expect(el.text()).not.eq('Sending...');
