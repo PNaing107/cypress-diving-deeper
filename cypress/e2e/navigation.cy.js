@@ -2,7 +2,7 @@
 
 describe('page navigation', () => {
   it('should navigate between pages', () => {
-    cy.visit('http://localhost:5173/');
+    cy.visit('/');
     // click link to about page
     cy.get('[data-cy="header-about-link"]').click();
     cy.location('pathname').should('equal', '/about');
